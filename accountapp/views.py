@@ -3,5 +3,14 @@ from django.shortcuts import render
 
 # Create your views here.
 
+# 6월 28일
+#def hello_world(request):
+#    return HttpResponse('Hello World')  # 철자 주의할 것 / alt+Enter하면 모듈을 알아서 가져올 수 있음
+
+# 7월 1일
+# def hello_world(request): # request : 어디서 요청이 들어왔는지 알 수 있음
+#     return render(request, 'base.html')
+
+# 7월 5일
 def hello_world(request):
-    return HttpResponse('Hello World')  # 철자 주의할 것 / alt+Enter하면 모듈을 알아서 가져올 수 있음
+    return render(request, 'accountapp/hello_world.html')
