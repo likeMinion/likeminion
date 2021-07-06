@@ -1,3 +1,6 @@
+{# 내부 파일 가져오기 #}
+{% load static %}
+
 {# 외부 라이브러리 가져와 사용할 것이라고 link를 넣어둠 #}
 <head>
     <meta charset="UTF-8">
@@ -12,4 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
 
+    {# Static Files Link #}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
 </head>
