@@ -2,19 +2,27 @@
 
 {% block content %}
 
-    <style>
-        .testing {
-            background: coral;
-            margin: 1rem;
-            height: 48px; {# 1rem = 18px #}
-            width: 48px;
-            border-radius: 0.5rem;
-            display: inline-block; {# 7월 8일 추가 #}
-        }
-    </style>
+{#    <style>#}
+{#        .testing {#}
+{#            background: coral;#}
+{#            margin: 1rem;#}
+{#            height: 48px; {# 1rem = 18px #}
+{#            width: 48px;#}
+{#            border-radius: 0.5rem;#}
+{#            display: inline-block; {# 7월 8일 추가 #}
+{#        }#}
+{#    </style>#}
 
-    <div style="height: 20rem; background-color: aquamarine;
-    margin: 2rem; border-radius: 1rem; overflow: scroll">
+    <div style="margin: 2rem; text-align: center">
+
+        {# form에서 method로 post를 적어줘야함 #}
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %} {# POST 방식을 정상적으로 하려면 꼭 적어야함 #}
+            <input type="submit" class="btn btn-info rounded-pill px-4">
+        </form>
+
+        {# GET METHOD #}
+        <h3>{{ text }}</h3>
 
 
 {#    <div class="testing" style="display: block">block</div>#}
@@ -24,13 +32,13 @@
 {#    <div class="testing">block</div>#}
 
     {# 7월 8일 #}
-    <div class="testing" style="height: 48px; width: 48px">px</div>
-    <div class="testing" style="height: 3rem; width: 3rem">rem</div>
-    <div class="testing" style="height: 3em; width: 3em">em</div>
-    <div class="testing" style="height: 3em; width: 3em">em</div>
-    <div class="testing" style="height: 3em; width: 3em">em</div>
-    <div class="testing" style="height: 3em; width: 3em">em</div>
-    <div class="testing" style="height: 30%; width: 30%">%</div>
+{#    <div class="testing" style="height: 48px; width: 48px">px</div>#}
+{#    <div class="testing" style="height: 3rem; width: 3rem">rem</div>#}
+{#    <div class="testing" style="height: 3em; width: 3em">em</div>#}
+{#    <div class="testing" style="height: 3em; width: 3em">em</div>#}
+{#    <div class="testing" style="height: 3em; width: 3em">em</div>#}
+{#    <div class="testing" style="height: 3em; width: 3em">em</div>#}
+{#    <div class="testing" style="height: 30%; width: 30%">%</div>#}
 
     </div>
 
