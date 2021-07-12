@@ -22,6 +22,9 @@
 {#            <input type="submit" class="btn btn-info rounded-pill px-4">#}
 {#        </form>#}
 
+        {# GET METHOD #}
+{#        <h3>{{ text }}</h3>#}
+
         {# 7월 12일 #}
         <form action="/accounts/hello_world/" method="post">
             {% csrf_token %} {# POST 방식을 정상적으로 하려면 꼭 적어야함 #}
@@ -30,7 +33,7 @@
         </form>
 
         {# GET METHOD #}
-        <h3>{{ text }}</h3>
+        <h3>{{ new_hello_world.text }}</h3> {# 객체의 text를 출력 #}
 
 
 {#    <div class="testing" style="display: block">block</div>#}

@@ -25,13 +25,20 @@ from django.shortcuts import render
 #                       context={'text':'GET METHOD'})
 
 # 7월 12일
+from accountapp.models import HelloWorld
+
+
 def hello_world(request):
     if request.method == 'POST':
 
         temp = request.POST.get('input_text') # request 안에 POST 내의 값을 가져옴
 
+        new_hello_world = HelloWorld()
+        new_hello_world.text = temp
+        new_hello_world.save() # 데이터 베이스 안에 새로운 행이 만들어짐
+
         return render(request, 'accountapp/hello_world.html',
-                      context={'text': temp}) # POST METHOD
+                      context={'new_hello_world': new_hello_world}) # new_hello_world라는 객체를 넘겨줌
     else:
         return render(request, 'accountapp/hello_world.html',
                       context={'text':'GET METHOD'})
