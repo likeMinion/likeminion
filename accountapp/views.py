@@ -16,10 +16,22 @@ from django.shortcuts import render
 #     return render(request, 'accountapp/hello_world.html')
 
 # 7월 8일
+# def hello_world(request):
+#     if request.method == 'POST':
+#         return render(request, 'accountapp/hello_world.html',
+#                       context={'text':'POST METHOD'})
+#     else:
+#         return render(request, 'accountapp/hello_world.html',
+#                       context={'text':'GET METHOD'})
+
+# 7월 12일
 def hello_world(request):
     if request.method == 'POST':
+
+        temp = request.POST.get('input_text') # request 안에 POST 내의 값을 가져옴
+
         return render(request, 'accountapp/hello_world.html',
-                      context={'text':'POST METHOD'})
+                      context={'text': temp}) # POST METHOD
     else:
         return render(request, 'accountapp/hello_world.html',
                       context={'text':'GET METHOD'})

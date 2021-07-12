@@ -15,9 +15,17 @@
 
     <div style="margin: 2rem; text-align: center">
 
+        {# 7월 8일 #}
         {# form에서 method로 post를 적어줘야함 #}
+{#        <form action="/accounts/hello_world/" method="post">#}
+{#            {% csrf_token %} {# POST 방식을 정상적으로 하려면 꼭 적어야함 #}
+{#            <input type="submit" class="btn btn-info rounded-pill px-4">#}
+{#        </form>#}
+
+        {# 7월 12일 #}
         <form action="/accounts/hello_world/" method="post">
             {% csrf_token %} {# POST 방식을 정상적으로 하려면 꼭 적어야함 #}
+            <input type="text" name="input_text">
             <input type="submit" class="btn btn-info rounded-pill px-4">
         </form>
 
