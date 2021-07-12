@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -25,25 +25,44 @@ from django.shortcuts import render
 #                       context={'text':'GET METHOD'})
 
 # 7월 12일
+from django.urls import reverse
+
 from accountapp.models import HelloWorld
 
 
+# def hello_world(request):
+#     if request.method == 'POST':
+#
+#         temp = request.POST.get('input_text') # request 안에 POST 내의 값을 가져옴
+#
+#         new_hello_world = HelloWorld()
+#         new_hello_world.text = temp
+#         new_hello_world.save() # 데이터 베이스 안에 새로운 행이 만들어짐
+#
+#         hello_world_list = HelloWorld.objects.all() # 모든 데이터를 가져옴
+#
+#         # return render(request, 'accountapp/hello_world.html',
+#         #               context={'new_hello_world': new_hello_world}) # new_hello_world라는 객체를 넘겨줌
+#         return render(request, 'accountapp/hello_world.html',
+#                       context={'hello_world_list': hello_world_list})
+#     else:
+#         hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
+#         return render(request, 'accountapp/hello_world.html',
+#                       context={'hello_world_list':hello_world_list})
+
+from accountapp.models import HelloWorld
 def hello_world(request):
     if request.method == 'POST':
-
-        temp = request.POST.get('input_text') # request 안에 POST 내의 값을 가져옴
-
+        temp = request.POST.get('input_text')  # request 안에 POST 내의 값을 가져옴
         new_hello_world = HelloWorld()
         new_hello_world.text = temp
-        new_hello_world.save() # 데이터 베이스 안에 새로운 행이 만들어짐
+        new_hello_world.save()  # 데이터 베이스 안에 새로운 행이 만들어짐
+        hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
 
-        hello_world_list = HelloWorld.objects.all() # 모든 데이터를 가져옴
-
-        # return render(request, 'accountapp/hello_world.html',
-        #               context={'new_hello_world': new_hello_world}) # new_hello_world라는 객체를 넘겨줌
-        return render(request, 'accountapp/hello_world.html',
-                      context={'hello_world_list': hello_world_list})
+        # Get 부분과 중복되는 코드 삭제함
+        # 실행해서 페이지에서 새로고침할 때 중복 코드 입력되는 것을 방지함
+        return HttpResponseRedirect(reverse('accountapp:hello_world'))
     else:
         hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
         return render(request, 'accountapp/hello_world.html',
-                      context={'hello_world_list':'hello_world_list'})
+                      context={'hello_world_list': hello_world_list})
