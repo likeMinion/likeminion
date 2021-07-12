@@ -37,8 +37,13 @@ def hello_world(request):
         new_hello_world.text = temp
         new_hello_world.save() # 데이터 베이스 안에 새로운 행이 만들어짐
 
+        hello_world_list = HelloWorld.objects.all() # 모든 데이터를 가져옴
+
+        # return render(request, 'accountapp/hello_world.html',
+        #               context={'new_hello_world': new_hello_world}) # new_hello_world라는 객체를 넘겨줌
         return render(request, 'accountapp/hello_world.html',
-                      context={'new_hello_world': new_hello_world}) # new_hello_world라는 객체를 넘겨줌
+                      context={'hello_world_list': hello_world_list})
     else:
+        hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
         return render(request, 'accountapp/hello_world.html',
-                      context={'text':'GET METHOD'})
+                      context={'hello_world_list':'hello_world_list'})
