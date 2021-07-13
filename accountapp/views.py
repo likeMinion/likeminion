@@ -57,7 +57,6 @@ def hello_world(request):
         new_hello_world = HelloWorld()
         new_hello_world.text = temp
         new_hello_world.save()  # 데이터 베이스 안에 새로운 행이 만들어짐
-        hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
 
         # Get 부분과 중복되는 코드 삭제함
         # 실행해서 페이지에서 새로고침할 때 중복 코드 입력되는 것을 방지함
@@ -66,3 +65,15 @@ def hello_world(request):
         hello_world_list = HelloWorld.objects.all()  # 모든 데이터를 가져옴
         return render(request, 'accountapp/hello_world.html',
                       context={'hello_world_list': hello_world_list})
+
+# 7월 13일
+from django.views.generic import CreateView
+from django.contrib.auth.models import User # ctrl + b / 누르면 선언한 곳으로 이동, 파악가능
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+
+class AccountCreateView(CreateView):
+    model = User
+    form_class = UserCreationForm
+    success_url = reverse_lazy('accountapp:hello_world') # 함수형과 클래스형이 부르는 방식이 다름
+    template_name = 'accountapp/create.html' #
