@@ -67,7 +67,7 @@ def hello_world(request):
                       context={'hello_world_list': hello_world_list})
 
 # 7월 13일
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.models import User # ctrl + b / 누르면 선언한 곳으로 이동, 파악가능
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -77,3 +77,9 @@ class AccountCreateView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:hello_world') # 함수형과 클래스형이 부르는 방식이 다름
     template_name = 'accountapp/create.html' #
+
+# 7월 15일
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
