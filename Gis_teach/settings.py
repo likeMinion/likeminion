@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accountapp'  # 사용
+    'accountapp',  # 사용
+    'bootstrap4' # 7월 15일
 ]
 
 MIDDLEWARE = [
