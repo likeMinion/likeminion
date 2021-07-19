@@ -67,7 +67,7 @@ def hello_world(request):
                       context={'hello_world_list': hello_world_list})
 
 # 7월 13일
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.models import User # ctrl + b / 누르면 선언한 곳으로 이동, 파악가능
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -92,3 +92,9 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/update.html'
+
+class AccountDeleteView(DeleteView):
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:hello_world')
+    template_name = 'accountapp/delete.html'
