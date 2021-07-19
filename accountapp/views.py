@@ -27,6 +27,7 @@ from django.shortcuts import render
 # 7월 12일
 from django.urls import reverse
 
+from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
 
 
@@ -88,7 +89,7 @@ class AccountDetailView(DetailView):
 # 7월 19일
 class AccountUpdateView(UpdateView):
     model = User
-    form_class = UserCreationForm
+    form_class = AccountCreationForm # UserCreationForm
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/update.html'
