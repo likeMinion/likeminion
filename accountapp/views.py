@@ -29,6 +29,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 
+from accountapp.decorator import account_ownership_required
 from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
 
@@ -108,10 +109,15 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
+has_ownership = [login_required, account_ownership_required] # 7월 22일
 
 # 7월 19일
-@method_decorator(login_required, 'get') # 7월 22일
-@method_decorator(login_required, 'post') # 7월 22일
+@method_decorator(has_ownership, 'get') # 7월 22일
+@method_decorator(has_ownership, 'post') # 7월 22일
+# @method_decorator(login_required, 'get') # 7월 22일
+# @method_decorator(login_required, 'post') # 7월 22일
+# @method_decorator(account_ownership_required, 'get') # 7월 22일
+# @method_decorator(account_ownership_required, 'post') # 7월 22일
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm # UserCreationForm
@@ -133,8 +139,12 @@ class AccountUpdateView(UpdateView):
     #         return HttpResponseForbidden()
 
 
-@method_decorator(login_required, 'get') # 7월 22일
-@method_decorator(login_required, 'post') # 7월 22일
+@method_decorator(has_ownership, 'get') # 7월 22일
+@method_decorator(has_ownership, 'post') # 7월 22일
+# @method_decorator(login_required, 'get') # 7월 22일
+# @method_decorator(login_required, 'post') # 7월 22일
+# @method_decorator(account_ownership_required, 'get') # 7월 22일
+# @method_decorator(account_ownership_required, 'post') # 7월 22일
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
