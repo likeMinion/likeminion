@@ -21,15 +21,13 @@
                 </h2>
             {% endif %}
         </div>
-        <div>
-            {{ target_user.date_joined }}
-        </div>
         {% if user == target_user %}
         <div>
-            <a href="{% url 'accountapp:update' pk=target_user.pk %}">Update Info</a>
-        </div>
-        <div>
-            <a href="{% url 'accountapp:delete' pk=target_user.pk %}">Quit</a>
+            <a href="{% url 'accountapp:update' pk=target_user.pk %}"
+            class="material-icons round_button mx-1">settings</a>
+
+            <a href="{% url 'accountapp:delete' pk=target_user.pk %}"
+            class="material-icons round_button mx-1">close</a> {# 마진을 x방향으로 1 #}
         </div>
         {% endif %}
     </div>
