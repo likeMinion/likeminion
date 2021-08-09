@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'bootstrap4', # 7월 15일
     'profileapp', # 7월 22일
     'articleapp', # 8월 2일
+    'commentapp', # 8월 9일
 ]
 
 MIDDLEWARE = [
