@@ -18,7 +18,7 @@ class CommentCreateView(CreateView):
     template_name = 'commentapp/create.html'
 
     def form_valid(self, form):
-        form.instance.writer = self.request.User
+        form.instance.writer = self.request.user
         form.instance.article_id = self.request.POST.get('article_pk')
         return super().form_valid(form)
 
