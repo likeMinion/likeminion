@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'articleapp', # 8월 2일
     'commentapp', # 8월 9일
     'projectapp', # 8월 12일
+    'subscribeapp', # 8월 19일
 ]
 
 MIDDLEWARE = [

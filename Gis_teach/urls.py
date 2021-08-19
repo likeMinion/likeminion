@@ -25,4 +25,5 @@ urlpatterns = [
     path('articles/', include('articleapp.urls')), # 8월 2일
     path('comments/', include('commentapp.urls')), # 8월 9일
     path('projects/', include('projectapp.urls')), # 8월 12일
+    path('subscribes/', include('subscribeapp.urls')), # 8월 19일
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
